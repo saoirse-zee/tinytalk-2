@@ -1,11 +1,17 @@
-const sourceFile = Deno.args[0];
+/**
+ * Reads a Tinytalk source file and prints the contents.
+ * @param {string} file - source file location
+ */
+export async function readSourceFile(file: string) {
+  console.log(`Got a source file: ${file}`);
 
-if (!sourceFile) {
+  const text = await Deno.readTextFile(file);
+  console.log(text);
+}
+
+if (Deno.args.length < 1) {
   console.log("Make sure you pass a filename to the script!");
   Deno.exit(1);
 }
 
-console.log(`Got a source file: ${sourceFile}`);
-
-const text = await Deno.readTextFile(sourceFile);
-console.log(text);
+await readSourceFile(Deno.args[0]);
