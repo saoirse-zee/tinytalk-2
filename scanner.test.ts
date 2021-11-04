@@ -68,3 +68,16 @@ Deno.test("Can scan a multi-character token", () => {
     },
   ]);
 });
+
+Deno.test("Can scan a string literal", () => {
+  const source = `"abcde"`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.STRING,
+      line: 1,
+      value: "abcde",
+    },
+  ]);
+});

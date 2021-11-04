@@ -88,6 +88,17 @@ export function scanner(source: string): Token[] {
         line++;
         break;
 
+      case `"`: {
+        let value = ``;
+        while (peek() !== `"` && !isAtEnd()) {
+          value += peek();
+          current++;
+        }
+        current++; // Get past that last "
+        addToken(TokenType.STRING, value);
+        break;
+      }
+
       default:
         report(line, `Tinytalk doesn't know about this character: ${char}`);
         hadError = true;
@@ -95,10 +106,11 @@ export function scanner(source: string): Token[] {
     current++;
   }
 
-  function addToken(type: TokenType) {
+  function addToken(type: TokenType, value?: string) {
     const token: Token = {
       type,
       line,
+      value,
     };
     tokens.push(token);
   }

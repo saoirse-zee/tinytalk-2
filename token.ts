@@ -21,12 +21,12 @@ export enum TokenType {
   GREATER_EQUAL = ">=",
   LESS = "<",
   LESS_EQUAL = "<=",
-  /*
   // Literals.
-  IDENTIFIER,
-  STRING,
-  NUMBER,
+  // IDENTIFIER,
+  STRING = "string",
+  // NUMBER,
 
+  /*
   // Keywords.
   AND,
   CLASS,
@@ -51,7 +51,6 @@ export enum TokenType {
 
 export type Token = {
   type: TokenType;
-  // lexeme: string;
-  // literal: do I need this?
   line: number;
+  value?: string;
 };
