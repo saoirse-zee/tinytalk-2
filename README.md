@@ -9,3 +9,15 @@ Generate docs:
 ```
 deno doc read.ts
 ```
+
+Run tests:
+
+```
+deno test
+```
+
+Format everything:
+
+```
+deno fmt
+```

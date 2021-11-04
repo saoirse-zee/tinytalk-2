@@ -21,7 +21,6 @@ export enum TokenType {
   GREATER_EQUAL = ">=",
   LESS = "<",
   LESS_EQUAL = "<=",
-
   /*
   // Literals.
   IDENTIFIER,
@@ -52,7 +51,7 @@ export enum TokenType {
 
 export type Token = {
   type: TokenType;
-  lexeme: string;
+  // lexeme: string;
   // literal: do I need this?
   line: number;
 };

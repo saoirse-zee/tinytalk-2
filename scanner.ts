@@ -93,7 +93,6 @@ export function scanner(source: string): Token[] {
   function addToken(type: TokenType) {
     const token: Token = {
       type,
-      lexeme: source.substring(start, current),
       line,
     };
     tokens.push(token);
