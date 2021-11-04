@@ -110,8 +110,8 @@ export function scanner(source: string): Token[] {
     const token: Token = {
       type,
       line,
-      value,
     };
+    if (value) token.value = value;
     tokens.push(token);
   }
 
