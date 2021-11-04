@@ -81,6 +81,11 @@ export function scanner(source: string): Token[] {
         break;
 
       case " ":
+      case "\r":
+        break;
+
+      case "\n":
+        line++;
         break;
 
       default:
