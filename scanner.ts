@@ -116,7 +116,7 @@ export function scanner(source: string): Token[] {
    * @returns next character in source
    */
   function peek() {
-    return source.charAt(current);
+    return source.charAt(current + 1);
   }
 
   // TODO: return hadError along with tokens in a tuple.
