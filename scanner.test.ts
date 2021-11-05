@@ -94,3 +94,42 @@ Deno.test("String literal: Can handle line breaks", () => {
     },
   ]);
 });
+
+Deno.test("Number literal: Can scan a non-zero number", () => {
+  const source = `1`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.NUMBER,
+      line: 1,
+      value: 1,
+    },
+  ]);
+});
+
+Deno.test("Number literal: Can scan a multi-digit number", () => {
+  const source = `123`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.NUMBER,
+      line: 1,
+      value: 123,
+    },
+  ]);
+});
+
+Deno.test("Number literal: Can scan zero", () => {
+  const source = `0`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.NUMBER,
+      line: 1,
+      value: 0,
+    },
+  ]);
+});

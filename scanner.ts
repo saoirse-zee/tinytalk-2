@@ -106,6 +106,19 @@ export function scanner(source: string): Token[] {
         break;
       }
 
+      case "0":
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+        handleNumber();
+        break;
+
       default:
         report(line, `Tinytalk doesn't know about this character: ${char}`);
         hadError = true;
@@ -113,12 +126,29 @@ export function scanner(source: string): Token[] {
     current++;
   }
 
-  function addToken(type: TokenType, value?: string) {
+  function handleNumber() {
+    while (peek() !== `"` && !isAtEnd()) {
+      if (peek() == NEW_LINE) line++;
+      current++; // TODO change to advance()?
+    }
+
+    current++; // Get past that last double quote mark
+
+    // Here we trim surrounding quotes
+    console.log(">>> ", source.substring(start, current));
+    const value = Number(source.substring(start, current));
+    console.log(">>> ", value);
+    addToken(TokenType.NUMBER, value);
+  }
+
+  function addToken(type: TokenType, value?: string | number) {
     const token: Token = {
       type,
       line,
     };
-    if (value) token.value = value;
+
+    if (value !== undefined) token.value = value;
+
     tokens.push(token);
   }
 

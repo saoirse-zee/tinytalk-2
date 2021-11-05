@@ -24,7 +24,7 @@ export enum TokenType {
   // Literals.
   // IDENTIFIER,
   STRING = "string",
-  // NUMBER,
+  NUMBER = "number",
 
   /*
   // Keywords.
@@ -52,5 +52,5 @@ export enum TokenType {
 export type Token = {
   type: TokenType;
   line: number;
-  value?: string;
+  value?: string | number;
 };
