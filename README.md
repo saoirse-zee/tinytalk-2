@@ -1,7 +1,7 @@
 # Tinytalk 2
 
 I'm loosely following https://craftinginterpreters.com/, with the idea of making
-a little Logo-like lang. 🐢
+a little [Logo-like lang](https://el.media.mit.edu/logo-foundation/what_is_logo/logo_programming.html). 🐢
 
 # Helpful commands
 
