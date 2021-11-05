@@ -77,7 +77,20 @@ Deno.test("Can scan a string literal", () => {
     {
       type: TokenType.STRING,
       line: 1,
-      value: "abcde",
+      value: `abcde`,
+    },
+  ]);
+});
+
+Deno.test("String literal: Can handle line breaks", () => {
+  const source = `"abc\nde"`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.STRING,
+      line: 2,
+      value: `abc\nde`,
     },
   ]);
 });

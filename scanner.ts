@@ -3,6 +3,7 @@ import { Token, TokenType } from "./token.ts";
 import { report } from "./report.ts";
 
 const END_OF_LINE = "\n";
+const NEW_LINE = `\n`;
 
 /**
  * Takes Tinytalk source and returns tokens
@@ -89,12 +90,18 @@ export function scanner(source: string): Token[] {
         break;
 
       case `"`: {
-        let value = ``;
         while (peek() !== `"` && !isAtEnd()) {
-          value += peek();
-          current++;
+          // TODO handle newlines
+          if (peek() == NEW_LINE) line++;
+          current++; // TODO change to advance()?
         }
-        current++; // Get past that last "
+
+        // TODO handle unterminated strings
+
+        current++; // Get past that last double quote mark
+
+        // Here we trim surrounding quotes
+        const value = source.substring(start + 1, current); // QUESTION: this doesn't match the book. He has current+1. Why?
         addToken(TokenType.STRING, value);
         break;
       }
@@ -115,6 +122,13 @@ export function scanner(source: string): Token[] {
     tokens.push(token);
   }
 
+  /**
+   * Tells you if the next character matches `expected`. Also advances the cursor.
+   *
+   * @param expected - the character you want to test for
+   *
+   * @returns boolean
+   */
   function match(expected: string) {
     if (isAtEnd()) return false;
     if (peek() !== expected) return false;
@@ -122,6 +136,7 @@ export function scanner(source: string): Token[] {
     current++;
     return true;
   }
+  // TODO add advance here
 
   /**
    *
