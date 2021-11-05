@@ -1,3 +1,7 @@
+# Tinytalk 2
+I'm loosely following https://craftinginterpreters.com/, with the idea of making a little Logo-like lang. 🐢
+
+# Helpful commands
 Read a source file and echo its contents:
 
 ```
