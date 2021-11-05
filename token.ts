@@ -25,7 +25,6 @@ export enum TokenType {
   // IDENTIFIER,
   STRING = "string",
   NUMBER = "number",
-
   /*
   // Keywords.
   AND,
