@@ -134,10 +134,7 @@ export function scanner(source: string): Token[] {
 
     current++; // Get past that last double quote mark
 
-    // Here we trim surrounding quotes
-    console.log(">>> ", source.substring(start, current));
     const value = Number(source.substring(start, current));
-    console.log(">>> ", value);
     addToken(TokenType.NUMBER, value);
   }
 
