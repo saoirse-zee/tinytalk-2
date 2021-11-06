@@ -170,3 +170,21 @@ Deno.test("User defined identifier: Can scan", () => {
     },
   ]);
 });
+
+Deno.test("Can scan multiple tokens", () => {
+  const source = `1 hi`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.NUMBER,
+      line: 1,
+      value: 1,
+    },
+    {
+      type: TokenType.IDENTIFIER,
+      line: 1,
+      value: "hi",
+    },
+  ]);
+});
