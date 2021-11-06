@@ -5,10 +5,16 @@ a little Logo-like lang. 🐢
 
 # Helpful commands
 
-Read a source file and echo its contents:
+Run Tinytalk on a file:
 
 ```
-deno run --allow-read read.ts hello.tiny
+deno run --allow-read tinytalk.ts hello.tiny
+```
+
+Run Tinytalk REPL:
+
+```
+deno run tinytalk.ts
 ```
 
 Generate docs:
