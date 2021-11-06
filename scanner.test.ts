@@ -133,3 +133,40 @@ Deno.test("Number literal: Can scan zero", () => {
     },
   ]);
 });
+
+Deno.test("Reserved word: Can scan `if`", () => {
+  const source = `if`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.IF,
+      line: 1,
+    },
+  ]);
+});
+
+Deno.test("Reserved word: Can scan `when`", () => {
+  const source = `when`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.WHEN,
+      line: 1,
+    },
+  ]);
+});
+
+Deno.test("User defined identifier: Can scan", () => {
+  const source = `blurg`;
+  const tokens = scanner(source);
+
+  assertEquals(tokens, [
+    {
+      type: TokenType.IDENTIFIER,
+      line: 1,
+      value: "blurg",
+    },
+  ]);
+});

@@ -1,5 +1,6 @@
 import { Token, TokenType } from "./token.ts";
 
+import { keywords } from "./keywords.ts";
 import { report } from "./report.ts";
 
 const END_OF_LINE = "\n";
@@ -122,6 +123,8 @@ export function scanner(source: string): Token[] {
       default:
         if (isDigit(char)) {
           handleNumber();
+        } else if (isAlpha(char)) {
+          handleIdentifier();
         } else {
           report(line, `Tinytalk doesn't know about this character: ${char}`);
           hadError = true;
@@ -147,6 +150,23 @@ export function scanner(source: string): Token[] {
 
     const value = Number(source.substring(start, current + 1));
     addToken(TokenType.NUMBER, value);
+  }
+
+  function handleIdentifier() {
+    while (isAlpha(peek())) {
+      current++;
+    }
+
+    const value = source.substring(start, current + 1);
+
+    const keywordType = keywords.get(value);
+    if (keywordType) {
+      // We've got a reserved word
+      addToken(keywordType);
+    } else {
+      // We've got a user-defined word
+      addToken(TokenType.IDENTIFIER, value);
+    }
   }
 
   function addToken(type: TokenType, value?: string | number) {
@@ -196,4 +216,10 @@ export function scanner(source: string): Token[] {
 
 function isDigit(char: string) {
   return char >= "0" && char <= "9";
+}
+
+function isAlpha(char: string) {
+  return (
+    (char >= "a" && char <= "z") || (char >= "A" && char <= "Z") || char == "_"
+  );
 }

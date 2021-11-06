@@ -21,19 +21,22 @@ export enum TokenType {
   GREATER_EQUAL = ">=",
   LESS = "<",
   LESS_EQUAL = "<=",
+
   // Literals.
-  // IDENTIFIER,
+  IDENTIFIER = "identifier",
   STRING = "string",
   NUMBER = "number",
-  /*
+
   // Keywords.
+  IF = "if",
+  WHEN = "when",
+  /*
   AND,
   CLASS,
   ELSE,
   FALSE,
   FUN,
   FOR,
-  IF,
   NIL,
   OR,
   PRINT,
