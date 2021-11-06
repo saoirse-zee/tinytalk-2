@@ -120,21 +120,32 @@ export function scanner(source: string): Token[] {
         break;
 
       default:
-        report(line, `Tinytalk doesn't know about this character: ${char}`);
-        hadError = true;
+        if (isDigit(char)) {
+          handleNumber();
+        } else {
+          report(line, `Tinytalk doesn't know about this character: ${char}`);
+          hadError = true;
+        }
     }
     current++;
   }
 
   function handleNumber() {
-    while (peek() !== `"` && !isAtEnd()) {
-      if (peek() == NEW_LINE) line++;
+    while (isDigit(peek())) {
       current++; // TODO change to advance()?
     }
 
-    current++; // Get past that last double quote mark
+    // TODO: Look for fractions
+    // if (peek() == "/" && isDigit(peekNext())) {
+    //   // Consume the "/"
+    //   current++;
 
-    const value = Number(source.substring(start, current));
+    //   while (isDigit(peek())) {
+    //     current++;
+    //   }
+    // }
+
+    const value = Number(source.substring(start, current + 1));
     addToken(TokenType.NUMBER, value);
   }
 
@@ -166,13 +177,23 @@ export function scanner(source: string): Token[] {
   // TODO add advance here
 
   /**
-   *
    * @returns next character in source
    */
   function peek() {
     return source.charAt(current + 1);
   }
 
+  /**
+   * @returns two characters forward in source
+   */
+  function peekNext() {
+    return source.charAt(current + 2);
+  }
+
   // TODO: return hadError along with tokens in a tuple.
   return tokens;
+}
+
+function isDigit(char: string) {
+  return char >= "0" && char <= "9";
 }
