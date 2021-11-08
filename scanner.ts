@@ -20,6 +20,7 @@ export function scanner(source: string): Token[] {
   let line = 1; // what source line current is on
 
   while (!isAtEnd()) {
+    start = current;
     scanToken();
   }
 
