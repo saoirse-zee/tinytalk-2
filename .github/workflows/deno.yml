@@ -15,8 +15,11 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      packages: write
 
     steps:
       - name: Setup repo
@@ -35,3 +38,9 @@ jobs:
 
       - name: Run tests
         run: deno test -A --unstable
+        
+      - name: Package and publish
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
