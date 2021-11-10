@@ -12,7 +12,6 @@ const NEW_LINE = `\n`;
  * @returns tokens
  */
 export function scanner(source: string): Token[] {
-  let hadError = false;
   const tokens: Token[] = [];
 
   let start = 0; // points to the first character in the lexeme being scanned
@@ -207,9 +206,9 @@ export function scanner(source: string): Token[] {
   /**
    * @returns two characters forward in source
    */
-  function peekNext() {
-    return source.charAt(current + 2);
-  }
+  // function peekNext() {
+  //  return source.charAt(current + 2);
+  //}
 
   // TODO: return hadError along with tokens in a tuple.
   return tokens;
