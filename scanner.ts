@@ -127,7 +127,6 @@ export function scanner(source: string): Token[] {
           handleIdentifier();
         } else {
           report(line, `Tinytalk doesn't know about this character: ${char}`);
-          hadError = true;
         }
     }
     current++;
