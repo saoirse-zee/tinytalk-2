@@ -35,3 +35,6 @@ jobs:
 
       - name: Run tests
         run: deno test -A --unstable
+
+      - name: Build
+        run: deno bundle tinytalk.ts
