@@ -13,13 +13,13 @@ Keeping track of notes from my reading [here](./notes.md), and issues
 Run Tinytalk on a file:
 
 ```
-deno run --allow-read tinytalk.ts hello.tiny
+deno run --allow-read src/tinytalk.ts examples/hello.tiny
 ```
 
 Run Tinytalk REPL:
 
 ```
-deno run tinytalk.ts
+deno run src/tinytalk.ts
 ```
 
 Generate docs:
