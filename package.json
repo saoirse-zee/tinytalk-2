@@ -1,0 +1,20 @@
+{
+  "name": "@tinyland/tinytalk",
+  "version": "0.0.1",
+  "description": "A tiny lang.",
+  "main": "tinytalk.ts",
+  "scripts": {
+    "test": "deno test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saoirse-zee/tinytalk-2.git"
+  },
+  "files": [],
+  "author": "Emma Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saoirse-zee/tinytalk-2/issues"
+  },
+  "homepage": "https://github.com/saoirse-zee/tinytalk-2#readme"
+}
