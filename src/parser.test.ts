@@ -9,7 +9,7 @@ Deno.test(
     const ast = { type: "NumericLiteral", value: 2 };
 
     assertEquals(parse(tokens), ast);
-  }
+  },
 );
 
 Deno.test(
@@ -19,7 +19,7 @@ Deno.test(
     const ast = { type: "StringLiteral", value: "hello" };
 
     assertEquals(parse(tokens), ast);
-  }
+  },
 );
 
 Deno.test(
@@ -29,7 +29,7 @@ Deno.test(
     const ast = { type: "Identifier", name: "sum" };
 
     assertEquals(parse(tokens), ast);
-  }
+  },
 );
 
 Deno.test("should return an AST for a basic data structure - no args", (t) => {
@@ -73,7 +73,7 @@ Deno.test(
     const result = parse(tokens);
 
     assertEquals(result, ast);
-  }
+  },
 );
 
 Deno.test("should return an AST for a nested data structure", (t) => {
