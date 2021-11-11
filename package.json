@@ -1,6 +1,6 @@
 {
   "name": "@tinyland/tinytalk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tiny lang.",
   "main": "tinytalk.ts",
   "scripts": {
