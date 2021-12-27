@@ -8,6 +8,10 @@ a little
 Keeping track of notes from my reading [here](./notes.md), and issues
 [here](https://github.com/saoirse-zee/tinytalk-2/issues).
 
+## Getting started
+
+This project uses [Deno](https://deno.land/). Follow the steps on the Deno site to install Deno on your system. For Mac, it's `brew install deno`.
+
 # Helpful commands
 
 Run Tinytalk on a file:
